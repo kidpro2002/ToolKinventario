@@ -1,41 +1,6 @@
-# ToolKinventario - Dependencias de Python
-# Sistema de inventario para Raspberry Pi
-
-# Framework web principal
-Flask==2.3.3
-Flask-SQLAlchemy==3.0.5
+Flask==3.0.0
+Flask-SQLAlchemy==3.1.1
 Flask-Login==0.6.3
 Flask-Migrate==4.0.5
-
-# Base de datos
-SQLAlchemy==2.0.21
-
-# Seguridad y autenticación
-Werkzeug==2.3.7
-bcrypt==4.0.1
-
-# Procesamiento de imágenes y códigos de barras
-opencv-python==4.8.1.78
-pyzbar==0.1.9
-Pillow==10.0.1
-numpy==1.24.3
-
-# Utilidades para archivos y datos
-python-csv==0.0.13
-
-# Monitoreo del sistema (para Raspberry Pi)
-psutil==5.9.5
-
-# Servidor WSGI para producción
-gunicorn==21.2.0
-
-# Desarrollo y testing (opcional)
-pytest==7.4.2
-pytest-flask==1.2.0
-
-# Documentación
-Sphinx==7.1.2
-
-# Utilidades adicionales
+Werkzeug==3.0.1
 python-dotenv==1.0.0
-click==8.1.7
