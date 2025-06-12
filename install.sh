@@ -214,11 +214,16 @@ update_application() {
     # Actualizar dependencias si es necesario
     print_step "Verificando dependencias..."
     source "$VENV_DIR/bin/activate"
-    
-    # Descargar requirements.txt desde el repositorio
-    curl -sSL "$REPO_URL/requirements.txt" -o "$INSTALL_DIR/requirements.txt"
-    pip install --upgrade --quiet -r "$INSTALL_DIR/requirements.txt"
-    
+
+    # Instalar solo dependencias básicas y estables
+    pip install --upgrade --quiet \
+        Flask==3.0.0 \
+        Flask-SQLAlchemy==3.1.1 \
+        Flask-Login==0.6.3 \
+        Flask-Migrate==4.0.5 \
+        Werkzeug==3.0.1 \
+        python-dotenv==1.0.0
+
     print_success "Dependencias actualizadas"
     
     # Ejecutar migraciones de base de datos si es necesario
@@ -395,11 +400,16 @@ else
         python3-venv \
         python3-dev \
         build-essential \
+        gcc \
+        g++ \
+        make \
         git \
         curl \
         wget \
         sqlite3 \
         libsqlite3-dev \
+        libffi-dev \
+        libssl-dev \
         nginx \
         supervisor \
         ufw \
@@ -432,11 +442,23 @@ else
     
     # Instalar dependencias de Python
     print_step "Instalando dependencias de Python..."
-    
+
     # Descargar requirements.txt desde el repositorio
     curl -sSL "$REPO_URL/requirements.txt" -o "$INSTALL_DIR/requirements.txt"
-    pip install --quiet -r "$INSTALL_DIR/requirements.txt"
-    
+
+    # Actualizar pip y herramientas básicas
+    pip install --upgrade pip setuptools wheel
+
+    # Instalar solo dependencias básicas y estables
+    print_step "Instalando dependencias básicas..."
+    pip install --quiet --no-cache-dir \
+        Flask==3.0.0 \
+        Flask-SQLAlchemy==3.1.1 \
+        Flask-Login==0.6.3 \
+        Flask-Migrate==4.0.5 \
+        Werkzeug==3.0.1 \
+        python-dotenv==1.0.0
+
     print_success "Dependencias de Python instaladas"
     
     # Descargar aplicación principal
